@@ -15,6 +15,7 @@ class Bird {
       y: 2,
     };
 
+    this.isDead = false;
     this.acceleration = 0.1;
     this.img = new Image();
     this.img.src = "./yellowbird-downflap.png";
@@ -24,16 +25,22 @@ class Bird {
     c.beginPath();
     c.drawImage(
       this.img,
-      this.location.x,
+      this.location.x - this.size.width / 2,
       this.location.y,
       this.size.width,
       this.size.height
     );
   }
 
+  checkBorderCollision() {
+    if (this.location.y + this.size.height >= canvas.height) {
+      this.location.y = canvas.height - this.size.height;
+      this.isDead = true;
+    }
+  }
+
   jump() {
     this.velocity.y = -2;
-    this.img.src = "./yellowbird-upflap.png";
     console.log(this.velocity, this.location.y);
   }
   move() {
@@ -43,6 +50,9 @@ class Bird {
 
   update() {
     this.draw();
-    this.move();
+    if (!this.isDead) {
+      this.move();
+      this.checkBorderCollision();
+    }
   }
 }
