@@ -2,12 +2,12 @@ class Bird {
   constructor() {
     this.location = {
       x: canvas.width / 2,
-      y: 0,
+      y: canvas.height / 2,
     };
 
     this.size = {
-      width: 50,
-      height: 40,
+      width: 30,
+      height: 20,
     };
 
     this.velocity = {

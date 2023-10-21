@@ -41,9 +41,9 @@ class Background {
     }
     this.location.x += this.velocity.x;
   }
-  update(isDead) {
+  update() {
     this.draw();
-    if (!isDead) {
+    if (!bird.isDead) {
       this.move();
     }
   }

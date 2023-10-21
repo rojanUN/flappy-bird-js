@@ -8,8 +8,8 @@ const pipe = new Pipe();
 
 function gameLoop() {
   c.clearRect(0, 0, 300, 500);
-  bg.update(bird.isDead);
-  bg1.update(bird.isDead);
+  bg.update();
+  bg1.update();
   bird.update();
   pipe.update();
   requestAnimationFrame(gameLoop);
