@@ -19,4 +19,8 @@ function gameLoop() {
 document.addEventListener("keydown", () => {
   bird.jump();
 });
+
+canvas.addEventListener("touchstart", () => {
+  bird.jump();
+});
 gameLoop();
