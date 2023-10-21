@@ -47,12 +47,37 @@ class Pipe {
     }
     this.location.x += this.velocity.x;
   }
+  collision() {
+    if (
+      this.location.x + this.size.width >=
+        bird.location.x - bird.size.width / 2 &&
+      this.location.x <=
+        bird.location.x - bird.size.width / 2 + bird.size.width &&
+      this.location.y + this.size.height >= bird.location.y &&
+      this.location.y <= bird.location.y + bird.size.height
+    ) {
+      console.log("collision");
+      bird.isDead = true;
+    }
 
+    if (
+      this.location.x + this.size.width >=
+        bird.location.x - bird.size.width / 2 &&
+      this.location.x <=
+        bird.location.x - bird.size.width / 2 + bird.size.width &&
+      bird.location.y + bird.size.height >=
+        this.location.y + this.size.height + 70
+    ) {
+      console.log("collision");
+      bird.isDead = true;
+    }
+  }
   update() {
     this.draw();
     this.drawBelow();
     if (!bird.isDead) {
       this.move();
+      this.collision();
     }
   }
 }
