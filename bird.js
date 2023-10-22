@@ -19,6 +19,11 @@ class Bird {
     this.acceleration = 0.1;
     this.img = new Image();
     this.img.src = "./yellowbird-downflap.png";
+    this.swoosh = new Audio();
+    this.wing = new Audio();
+    this.wing.src = "./audio_wing.ogg";
+    this.swoosh.src = "./audio_swoosh.ogg";
+    this.isSpaceDown = false;
   }
 
   draw() {

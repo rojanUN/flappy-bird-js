@@ -16,8 +16,20 @@ function gameLoop() {
   score.draw();
   requestAnimationFrame(gameLoop);
 }
-document.addEventListener("keydown", () => {
-  bird.jump();
+document.addEventListener("keydown", (e) => {
+  if (e.key === " ") {
+    bird.jump();
+    bird.isSpaceDown = true;
+    bird.wing.play();
+  }
+});
+
+document.addEventListener("keyup", (e) => {
+  if (e.key === " ") {
+    bird.isSpaceDown = false;
+    bird.wing.pause();
+    bird.wing.currentTime = 0;
+  }
 });
 
 canvas.addEventListener("touchstart", () => {
